@@ -1,0 +1,56 @@
+package main
+
+import (
+	"fmt"
+	"io"
+	"net/http"
+)
+
+type HomePageSize struct {
+	Url  string
+	Size int
+}
+
+func main() {
+	urls := []string{
+		"http://www.apple.com",
+		"http://www.amazon.com",
+		"http://www.google.com",
+		"http://www.microsoft.com",
+	}
+
+	results := make(chan HomePageSize)
+
+	for _, url := range urls {
+		go func(url string) {
+			res, err := http.Get(url)
+			if err != nil {
+				panic(err)
+			}
+			defer res.Body.Close()
+
+			bs, err := io.ReadAll(res.Body)
+			if err != nil {
+				panic(err)
+			}
+
+			results <- HomePageSize{
+				Url:  url,
+				Size: len(bs),
+			}
+		}(url)
+	}
+
+	var biggest HomePageSize
+
+	for range urls {
+		result := <-results
+		if result.Size > biggest.Size {
+			biggest = result
+		}
+
+		fmt.Println(result.Url, result.Size)
+	}
+
+	fmt.Println("The biggest home page:", biggest.Url)
+}

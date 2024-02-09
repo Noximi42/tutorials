@@ -1,0 +1,17 @@
+# rust
+debug/
+target/
+Cargo.lock
+**/*.rs.bk
+
+#go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.out
+
+vendor/
+
+go.work
