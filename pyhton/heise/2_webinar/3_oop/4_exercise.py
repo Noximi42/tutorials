@@ -12,7 +12,7 @@ class Vehicle:
             print("Ok, still ok, but maybe you need an upgrade in the future.")
         else:
             print("Invalid engine_type", self.engine_type)
-            
+
 class Car(Vehicle):
     def __init__(self, engine_type, horsepower, people_count):
         super().__init__(engine_type, horsepower)
