@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details for Blog Post {{ blog_post.id }}</title>
+</head>
+<body>
+<h1>Details for Blog Post {{ blog_post.id }}</h1>
+
+<h2>{{ blog_post.title|escape }}</h2>
+<p><em>{{ blog_post.last_modified_timestamp|date:'Y-m-d' }}
+    {{ blog_post.last_modified_timestamp|time:'H:i:s' }}</em></p>
+<p>{{ blog_post.content|escape|linebreaksbr }}</p>
+
+<h3>Comments</h3>
+{% if blog_post.comment_set.count %}
+<table>
+    <tr>
+        <th>Author</th>
+        <th>E-Mail Address</th>
+        <th>Content</th>
+    </tr>
+    {% for c in blog_post.comment_set.all %}
+    <tr>
+        <td>{{c.author|escape}}</td>
+        <td><i>{{c.e_mail_address|escape}}</i></td>
+        <td>{{c.content|escape|linebreaksbr}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<em>No comments</em>
+{% endif %}
+
+<h3>New Comment</h3>
+<p>{{ error_message }}</p>
+<form method="post" action="">
+    {% csrf_token %}
+    <input type="hidden" name="save_comment"/>
+    <table>
+        <tr>
+            <td>Your name:</td>
+            <td><input type="text" name="author" value="{{ author }}"/></td>
+        </tr>
+        <tr>
+            <td>Your e-mail address:</td>
+            <td><input type="text" name="e_mail_address" value="{{ e_mail_address }}"/></td>
+        </tr>
+        <tr>
+            <td>Comment:</td>
+            <td><textarea name="content">{{ content }}</textarea></td>
+        </tr>
+
+    </table>
+    <input type="submit" value="Submit">
+</form>
+
+<p><a href="{% url 'blog_post_list' %}">Back</a></p>
+</body>
+</html>
