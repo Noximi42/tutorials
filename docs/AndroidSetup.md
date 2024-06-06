@@ -12,7 +12,7 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=/opt/gradle/gradle-8.8/bin:$PATH # must be prepended, else it would use windows gradle
+export PATH=/opt/gradle/gradle-x.x/bin:$PATH # must be prepended, else it would use windows gradle
 ```
 
 Show installed packages: `./sdkmanager --list_installed`
