@@ -3,7 +3,6 @@
 ## Get Android SDK Manger CLI
 Download SDKManager CLI and move it to `/lib/android-sdk/cmdline-tools/latest/`
 
-
 Add following lines to .bashrc
 ```
 export ANDROID_HOME=/usr/lib/android-sdk
@@ -12,14 +11,12 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=/opt/gradle/gradle-x.x/bin:$PATH # must be prepended, else it would use windows gradle
 ```
-
 Show installed packages: `./sdkmanager --list_installed`
 Show available packages: `./sdkmanager --list`
 
 Typical setup
-````
+```
 build-tools;29.0.3
 build-tools;30.0.3
 build-tools;34.0.0
@@ -27,7 +24,7 @@ emulator
 platform-tools
 platforms;android-34
 system-images;android-34;google_apis;x86_64
-``````
+```
 
 
 ## openjdk
@@ -43,7 +40,7 @@ unzip -d /opt/gradle gradle-x.x-bin.zip
 
 Add following lines to .bashrc
 ```
-export PATH=/opt/gradle/gradle-8.8/bin:$PATH # must be prepended, else it would use windows gradle
+export PATH=/opt/gradle/gradle-x.x/bin:$PATH # must be prepended, else it would use windows gradle
 ```
 
 ## Emulator
@@ -68,5 +65,3 @@ export PATH=$PATH:$FLUTTER_HOME/bin
 ```
 
 Check with `flutter --version`
-
-
