@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post List</title>
+</head>
+<body>
+<h1>Blog Post List</h1>
+
+{% for bp in blog_post_list %}
+<h2>{{ bp.title|escape }}</h2>
+<p><em>{{ bp.last_modified_timestamp|date:'Y-m-d' }} {{ bp.last_modified_timestamp|time:'H:i:s' }}</em></p>
+<p>{{ bp.content|escape|linebreaksbr }}<br/>
+    <a href="{% url 'blog_post_details' bp.id %}">Details</a></p>
+{% endfor %}
+</body>
+</html>
