@@ -1,4 +1,4 @@
-# Android setup without AndroidStudio
+# Android setup without AndroidStudio asdf
 
 ## Get Android SDK Manger CLI
 Download SDKManager CLI and move it to `/lib/android-sdk/cmdline-tools/latest/`
